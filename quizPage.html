@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Benchmark_Questions</title>
+
+    <link rel="stylesheet" href="styleFinal.css" />
+    <script defer="" src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="startQuiz">
+      <button id="readyGo" type="button">START QUIZ</button>
+    </div>
+    <div>
+      <img id="logo" src="assets/epicode_logo.png" alt="epicode_logo" />
+    </div>
+    <main>
+    <div id="quizContainer"> 
+      <div id="timerContainer">
+        <p class="countdown" >
+
+          <span id="second">60</span>
+        </p>
+      </div>
+      <div id="topBlock">
+        <div id="timeCircle" class="timer" style="--duration: 10; --size: 100">
+          <div id="maskCircle" class="mask"></div>
+        </div>
+      </div>
+        <div id="answersContainer">
+        <h1 id="questionName">DOMANDA</h1>
+        <div id="bigAnswerContainer">
+          <div id="answerTab1">
+            <div class="answer">
+              <input value="1" name="answer" type="radio" id="answer1" />
+              <label for="answer1" class="answerLabel"
+              ><span></span></label
+              >
+            </div>
+            <div class="answer">
+              <input value="2" name="answer" type="radio" id="answer2" />
+              <label for="answer2" class="answerLabel"
+              ><span></span></label
+              >
+            </div>
+          </div>
+          <div id="answerTab2">
+            <div class="answer">
+              <input value="3" name="answer" type="radio" id="answer3" />
+              <label for="answer3" class="answerLabel"
+              ><span></span></label
+              >
+            </div>
+            <div class="answer">
+              <input value="4" name="answer" type="radio" id="answer4" />
+              <label for="answer4" class="answerLabel"
+              ><span></span></label
+              >
+            </div>
+          </div>
+        </div>
+      <div id="footer">
+        <button id="saveAnswer">CONFERMA</button>
+        <div>
+          <p id="questionCounter">
+            QUESTION <span style="color: #00ffff">1</span> / 10
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="finalResult">
+      <div id="punteggioTot">
+
+        <h1>SCORE</h1>
+      </div>
+        <div id="punteggioTot"></div>
+        <div id="progress-bar">
+            <div id="correct-progress"></div>
+        </div>
+        <div id="elencoRisposte">
+            <div class="square"><span>CORRECT</span><div class="punteggio"> </div></div>
+            <div class="square"><span>WRONG</span><div class="punteggio"> </div></div>
+            <div class="square"><span>EMPTY</span><div class="punteggio"> </div></div>
+            <div class="square"><span>TOTAL</span><div class="punteggio"> </div></div>
+        </div>
+        <div><ol id="elencoDomande"></ol>
+        </div>
+    </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+  </html>
