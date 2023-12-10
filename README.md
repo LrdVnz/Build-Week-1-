@@ -1,5 +1,10 @@
 Progetto di gruppo per la prima Build Week del corso Part-Time di Epicode. 
 
+VERSIONE LIVE: 
+https://lrdvnz.github.io/Build-Week-1-/
+
+Team members :  
+
 Antonio Grande (Team Leader) :  
 https://github.com/00Ton
 
