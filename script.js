@@ -120,6 +120,7 @@ const questions = [
 
     document.getElementById('saveAnswer').addEventListener('click',() => {
       recordAnswer();
+      clearAnswers();
     })
 
     document.getElementById('readyGo').addEventListener("click", () => {
@@ -152,34 +153,36 @@ const questions = [
       document.getElementById('maskCircle').classList.add('mask');
     }
     
+    let nodeAnswer=document.querySelectorAll('input');
+
     //funzioni  
     function recordAnswer(){
       // valutare se necessario uno variabile per registrare l'overtime o se basta verificare che il timer sia 0
-      if(second==(-1)) {
+        if(second==(-1)) {
     //timer 0 salvo il risultato nel mio array di risposte 
-    answerTot[numberQuestion]={answer:null,
-      question: positionQuestion,
-      point:0,
-      empty:true, //domanda vuota
-    };
-  } else {
-    let nodeAnswer=document.querySelectorAll('input');
-    let tempAnswer='';
-    let tempPoint=0;
-    for (let singleRecord of nodeAnswer) {
-      //controllo in tutti gli input se son checked
-      if(singleRecord.checked){
-        //trovato quello ok assegno il valore de testo contenuto nel label corrisposndente
-        tempAnswer=document.querySelectorAll('label')[+singleRecord.value-1].innerText;
-        break
-      }
-    }
-    
-    //verifico che la risposta sia corretta
-    if(questions[numberQuestion].correct_answer===tempAnswer){
-      //se corretta assegno un punto  
-      tempPoint=1;
-    }
+          answerTot[numberQuestion] = {
+            answer:null,
+            question: positionQuestion,
+            point:0,
+            empty:true, //domanda vuota
+            };
+            return
+         } else {
+            let tempAnswer='';
+            let tempPoint=0;
+             for (let singleRecord of nodeAnswer) {
+              //controllo in tutti gli input se son checked
+               if(singleRecord.checked){
+                  //trovato quello ok assegno il valore de testo contenuto nel label corrisposndente
+                  tempAnswer=document.querySelectorAll('label')[+singleRecord.value-1].innerText;
+                  break
+                }
+              }  
+                //verifico che la risposta sia corretta
+                if(questions[numberQuestion].correct_answer===tempAnswer){
+                //se corretta assegno un punto  
+                  tempPoint=1;
+                }
     // forse meglio metodo concat?? ma funziona
     //salvo la compilazione 
     answerTot[numberQuestion]={
@@ -192,10 +195,21 @@ const questions = [
   
   //settare il timer con la variabile second=60
   second=59;
-  document.getElementById('timeCircle').classList.remove('timer');
-  document.getElementById('maskCircle').classList.remove('mask');  //per restar element
+  let timeCircle = document.getElementById('timeCircle');
+  timeCircle.classList.remove('timer');
+  let maskCircle = document.getElementById('maskCircle');  //per restar element
+  maskCircle.classList.remove('mask');
+  void timeCircle.offsetWidth; 
+  void maskCircle.offsetWidth;
   numberQuestion++;
   nextDomanda();
+}
+
+function clearAnswers() {
+  for(let i = 0; i < nodeAnswer.length; i++) {
+    nodeAnswer[i].checked = false; 
+  }
+
 }
 
   //array per provare funzionamento
