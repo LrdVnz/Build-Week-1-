@@ -273,7 +273,8 @@ function clearAnswers() {
         if(answerTot[i].point==1) {
           rightWrong=`<i class="fas fa-check-square" style="color:green;"></i>`
         };
-        nodoQ.innerHTML += `<li class="riga">${rightWrong}${questions[i].question}<button class="showMore" value="${i}" ></button></li>`;
+        nodoQ.innerHTML += `<li class="riga">${rightWrong}${questions[i].question}<button class="showMore" value="${i}" ></button>
+                            <div> ${questions[i].correct_answer} </div> </li>`;
       }
 
       let pin=0;
