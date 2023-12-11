@@ -12,21 +12,24 @@
     <div id="startQuiz">
       <button id="readyGo" type="button">START QUIZ</button>
     </div>
-    <div>
-      <img id="logo" src="assets/epicode_logo.png" alt="epicode_logo" />
-    </div>
+   
     <main>
-    <div id="quizContainer"> 
+      <div>
+        <img id="logo" src="assets/epicode_logo.png" alt="epicode_logo" />
+      </div>
       <div id="timerContainer">
         <p class="countdown" >
 
           <span id="second">60</span>
         </p>
       </div>
+      <div id="timeCircle" class="timer" style="--duration: 10; --size: 100">
+        <div id="maskCircle" class="mask"></div>
+      </div>
+    <div id="quizContainer"> 
+
       <div id="topBlock">
-        <div id="timeCircle" class="timer" style="--duration: 10; --size: 100">
-          <div id="maskCircle" class="mask"></div>
-        </div>
+        
       </div>
         <div id="answersContainer">
         <h1 id="questionName">DOMANDA</h1>
