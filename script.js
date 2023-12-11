@@ -114,7 +114,7 @@ const questions = [
     //variabile per sapere posizione della domanda 
     let numberQuestion=0; //numero della domanda progressivo
     let positionQuestion=0; //posizione della domanda se lo facciamo casuale nell'array di domande
-    let second=59; //togliere 1 sec 
+    let second=61; //aggiungere 1 sec 
     
     // --------------------------------------------------------------------------------------------------    eventi
 
@@ -158,7 +158,7 @@ const questions = [
     //funzioni  
     function recordAnswer(){
       // valutare se necessario uno variabile per registrare l'overtime o se basta verificare che il timer sia 0
-        if(second==(-1)) {
+        if(second==(0)) {
     //timer 0 salvo il risultato nel mio array di risposte 
           answerTot[numberQuestion] = {
             answer:null,
@@ -166,7 +166,7 @@ const questions = [
             point:0,
             empty:true, //domanda vuota
             };
-            return
+            document.getElementById('second').style.color='';
          } else {
             let tempAnswer='';
             let tempPoint=0;
@@ -194,7 +194,7 @@ const questions = [
   }
   
   //settare il timer con la variabile second=60
-  second=59;
+  second=61;
   let timeCircle = document.getElementById('timeCircle');
   timeCircle.classList.remove('timer');
   let maskCircle = document.getElementById('maskCircle');  //per restar element
@@ -241,6 +241,7 @@ function clearAnswers() {
       alert('hai cambiato tab');
     })
      */ /// Non penso ci sia bisogno di un alert che ti avverte ogni volta che cambi risposta. C'è già l'indizio visivo del campo riempito !
+// volevo l'evento per il cambio della finesta browser
 
     // funzione per tabella punti in pagina risultato
     let nomeClassePunteggio='punteggio';
@@ -273,8 +274,8 @@ function clearAnswers() {
         if(answerTot[i].point==1) {
           rightWrong=`<i class="fas fa-check-square" style="color:green;"></i>`
         };
-        nodoQ.innerHTML += `<li class="riga">${rightWrong}${questions[i].question}<button class="showMore" value="${i}" ></button>
-                            <div> ${questions[i].correct_answer} </div> </li>`;
+        nodoQ.innerHTML += `<li class="riga">${rightWrong}${questions[i].question}<button class="showMore" value="${i}" >V</button>
+                            <ul class="openanswers showAnswers"></ul></li>`;
       }
 
       let pin=0;
@@ -282,7 +283,6 @@ function clearAnswers() {
         let risposte=questions[pin].incorrect_answers.concat(questions[pin].correct_answer);
         for (const iterator of risposte) {
           index.innerHTML += `<li>${iterator}</li>`;
-          console.log('li creati')  
         }
         pin++;
       }
@@ -291,8 +291,7 @@ function clearAnswers() {
         console.log(listaButton);
         for (let iterator of listaButton) {
           iterator.addEventListener('click',(event)=>{
-            let risposte=questions[+event.target.value].incorrect_answers.concat(questions[+event.target.value].correct_answer);
-            console.log(risposte);
+            document.getElementsByClassName('openanswers')[+event.target.value].classList.toggle('showAnswers');
           })
         }
       }
@@ -313,11 +312,13 @@ function clearAnswers() {
     // setInterval(()=>{document.getAnimations('time').start},10000)
     let timeQ=setInterval(timer,1000); //richiama funzione ogno 1000 millesimi di secondo
     function timer(){
-      document.getElementById('second').innerText=(''+second);
-      if(second==(-1)) return recordAnswer();       //funzione avanzamneto domanda
+      if(second==(0)){
+        recordAnswer();
+      }      //funzione avanzamneto domanda
       if(second<10){
         document.getElementById('second').style.color='red';
       }
       second--;
+      document.getElementById('second').innerText=(''+second);
   
     }
